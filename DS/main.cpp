@@ -42,8 +42,6 @@ int main(int argc, const char * argv[]) {
     Maths m = { 6, 1 };
     
     cout << m.add() << endl << m.sub() << endl;
-   
     return 0;
     
-    cout << sizeof(int) << endl;
 }
