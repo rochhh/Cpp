@@ -8,40 +8,23 @@
 #include <iostream>
 using namespace std;
 
-template< class T>
-class Maths {
-private:
-    T a;
-    T b;
-    
-public:
-    Maths( T a ,T b );
-    T add();
-    T sub();
-    
-};
-    template< class T>
-    Maths<T>::Maths( T a , T b ){
-        this->a = a;
-        this->b = b;
+
+int fun( int num ){
+    static int x = 0;
+    if ( num > 0){
+        x++;
+//        cout << num << endl;
+        return fun( num -1 ) + x;
+//        cout << num << endl;
     }
-    template< class T>
-    T Maths<T>::add(){
-        int c;
-        c= a+b;
-        return c;
-    }
-    template< class T>
-    T Maths<T>::sub(){
-        int c;
-        c = a-b;
-        return c;
-    }
+    return 0;
+}
+
 
 int main(int argc, const char * argv[]) {
-    Maths m = { 6, 1 };
     
-    cout << m.add() << endl << m.sub() << endl;
+    cout << fun( 5 ) <<endl;
+    
     return 0;
     
 }
