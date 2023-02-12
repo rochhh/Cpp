@@ -6,25 +6,29 @@
 //
 
 #include <iostream>
+void fun2( int num );
 using namespace std;
 
 
-int fun( int num ){
-    static int x = 0;
+void fun1( int num ){ 
     if ( num > 0){
-        x++;
-//        cout << num << endl;
-        return fun( num -1 ) + x;
-//        cout << num << endl;
+        cout << num << endl;
+         fun2( num -1 );
+//         fun( num-1);
     }
-    return 0;
+}
+
+void fun2( int num ){
+    if ( num > 0 ){
+        cout << num << endl;
+        fun1(num/2);
+    }
 }
 
 
 int main(int argc, const char * argv[]) {
     
-    cout << fun( 5 ) <<endl;
-    
+    fun1(20);
     return 0;
     
 }
