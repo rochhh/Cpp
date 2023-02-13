@@ -8,24 +8,24 @@
 #include <iostream>
 using namespace std;
 
-
-int pow( int m , int n ){
-    if ( m==0) return 0;
-    if ( n==0 ) return 1;
-    return  pow ( m , n-1 )*m;
-}
-
-int powOptimized( int m ,int n ){
-    if ( m == 0 ) return 0;
-    if ( n==0 ) return 1;
+double e( int x , int n ){   // x is pow(e) and n is how many terms to add , more terms more precision
+    static double numerator=1 , denominator=1;
+    double result;
     
-    if ( n%2==0 ) return pow( m*m, n/2 ); // 2^6 -> 2^3 *2^ 3
-    else return pow( m*m , (n-1)/2 )*m;
+    if ( n == 0 ) return 1;
+    
+    result = e( x , n-1 );
+    numerator = numerator*x;
+    denominator = denominator*n;
+    
+    return result + numerator/denominator;
+    
+    
 }
 
 
 int main(int argc, const char * argv[]) {
-    cout << powOptimized(5, 3)<<endl;
+    cout << e(1,10) <<endl;
     return 0;
     
 }
