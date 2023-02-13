@@ -8,24 +8,26 @@
 #include <iostream>
 using namespace std;
 
-double e( int x , int n ){   // x is pow(e) and n is how many terms to add , more terms more precision
-    static double numerator=1 , denominator=1;
-    double result;
+double optimizedE( int x , int n ){   // x is pow(e) and n is how many terms to add , more terms more precision
+    static double result = 1;
     
-    if ( n == 0 ) return 1;
+    if ( n==0 ) return result;
+    result = 1 + x*result / n;
     
-    result = e( x , n-1 );
-    numerator = numerator*x;
-    denominator = denominator*n;
-    
-    return result + numerator/denominator;
-    
-    
+    return optimizedE( x , n-1 );
+}
+
+double iterOptimizedE( int x  , int n ){
+    double result = 1;
+    for ( ; n > 0 ; n-- ){
+        result = 1 + x*result/n;
+    }
+    return result;
 }
 
 
 int main(int argc, const char * argv[]) {
-    cout << e(1,10) <<endl;
+    cout << iterOptimizedE(1,10) <<endl;
     return 0;
     
 }
