@@ -8,26 +8,31 @@
 #include <iostream>
 using namespace std;
 
-double optimizedE( int x , int n ){   // x is pow(e) and n is how many terms to add , more terms more precision
-    static double result = 1;
-    
-    if ( n==0 ) return result;
-    result = 1 + x*result / n;
-    
-    return optimizedE( x , n-1 );
+
+int nCr( int n , int r ){
+    if ( r==0 || n==r ) return 1;
+    return nCr( n-1 , r-1 ) + nCr( n-1 , r );
 }
 
-double iterOptimizedE( int x  , int n ){
-    double result = 1;
-    for ( ; n > 0 ; n-- ){
-        result = 1 + x*result/n;
-    }
-    return result;
+int fac( int n ){
+    if ( n==0 ) return 1;
+    return fac(n-1)*n;
 }
 
+int facNcr( int n , int r ){
+    int numerator ,denominator;
+    numerator = fac(n);
+    denominator = fac(r)*fac(n-r);
+    
+    return numerator/denominator;
+}
 
 int main(int argc, const char * argv[]) {
-    cout << iterOptimizedE(1,10) <<endl;
+    
+   
+    
+    cout << facNcr(4,2)<<endl;
+    
     return 0;
     
 }
