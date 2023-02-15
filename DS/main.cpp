@@ -9,30 +9,22 @@
 using namespace std;
 
 
-int nCr( int n , int r ){
-    if ( r==0 || n==r ) return 1;
-    return nCr( n-1 , r-1 ) + nCr( n-1 , r );
-}
-
-int fac( int n ){
-    if ( n==0 ) return 1;
-    return fac(n-1)*n;
-}
-
-int facNcr( int n , int r ){
-    int numerator ,denominator;
-    numerator = fac(n);
-    denominator = fac(r)*fac(n-r);
+void toh( int n , int a , int b , int c ){
     
-    return numerator/denominator;
+    if ( n > 0 ){
+        
+        toh( n-1 , a , c , b );
+        cout << " from " << a << "to" << c << endl;
+        toh( n-1 , b , a , c );
+    }
 }
+
 
 int main(int argc, const char * argv[]) {
     
-   
     
-    cout << facNcr(4,2)<<endl;
-    
+//    cout << toh( 6 ,1,2,3 ) <<endl;
+    toh( 6,1,2,3 );
     return 0;
     
 }
