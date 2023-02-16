@@ -6,25 +6,32 @@
 //
 
 #include <iostream>
+#include <cmath>
 using namespace std;
 
-
-void toh( int n , int a , int b , int c ){
-    
-    if ( n > 0 ){
-        
-        toh( n-1 , a , c , b );
-        cout << " from " << a << "to" << c << endl;
-        toh( n-1 , b , a , c );
-    }
-}
-
+/**
+ is power of two Leetcode
+ */
 
 int main(int argc, const char * argv[]) {
     
+    int *p;
+    p = new int[2];
+    p[0] = 33;
+    p[1] = 45;
+    p[2] = 89;
+    int *q;
+    q = new int[4];
+    for ( int i = 0 ; i <=4 ; i++ ){
+        q[i] = p[i];
+    }
+    free(p);
+    p=q;
+    q=NULL;
     
-//    cout << toh( 6 ,1,2,3 ) <<endl;
-    toh( 6,1,2,3 );
+    for ( int i = 0 ; i <= 4  ; i ++ ){
+        cout << p[i] << endl ;
+    }
     return 0;
     
 }
