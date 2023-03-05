@@ -24,6 +24,25 @@ void push( Stack *st , int value ){
         st->s[st->top]=value;
     }
 }
+
+void create( Stack *st ){
+    printf( "Enter Size" );
+    scanf("%d\n",st->size);
+    
+    st->top=-1;
+    st->s = (int *)malloc(st->size*sizeof(int));
+    
+}
+
+void display ( Stack *st ){
+    int i;
+    
+    for ( i = st->top ; i >=0 ; i-- ){
+        cout << st->s[i];
+    }
+    
+}
+
         
 int pop( Stack *st){
     int x = 0;
