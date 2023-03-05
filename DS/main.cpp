@@ -47,8 +47,7 @@ void display ( Stack *st ){
 int pop( Stack *st){
     int x = 0;
     if ( st->top == -1 ) cout << "Stack is empty" << endl;
-    x = st->s[st->top];
-    st->top--;
+    x = st->s[st->top--];
     
     return x;
 }
