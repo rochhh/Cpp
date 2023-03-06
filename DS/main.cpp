@@ -15,6 +15,28 @@ struct Stack {
     int *s;
 };
 
+bool isBalanced( char *exp ){
+//    struct Stack st;
+//    st.top = -1;
+//    st.size = strlen(exp);
+//    st.s = new char[exp.size()];
+    for ( int i = 0 ; exp[i] < '\0'; i++ ){
+        if ( exp[i] == '(' ) {
+            push(exp[i]);
+        }
+        if ( exp[i] == ')' ){
+            if ( top == NULL ){
+                return 0;
+                
+            } pop();
+        }
+        
+        if ( top == Null ) return 1;
+        return 0;
+    }
+    
+}
+
 void push( Stack *st , int value ){
     if ( st->top == st->size-1 ) {
         cout << "Stack overflow" << endl;
